@@ -133,3 +133,95 @@ function testAlmostSortedArray() {
 }
 
 testAlmostSortedArray();
+
+function sortStrings(arr) {
+  arr.sort((a, b) => a.localeCompare(b));
+}
+
+function isStringArraySorted(arr) {
+  for (let i = 0; i < arr.length - 1; i++) {
+      if (arr[i].localeCompare(arr[i + 1]) > 0) {
+          return false;
+      }
+  }
+  return true;
+}
+
+function findSubstring(mainString, substring) {
+  return mainString.indexOf(substring) !== -1;
+}
+
+function checkSubstrings(arr, substring) {
+  return arr.filter(str => findSubstring(str, substring));
+}
+
+function testStringSorting() {
+  let stringArray = ["banana", "apple", "orange", "mango", "grape"];
+  
+  console.log("\nОригінальний масив рядків:");
+  printArray(stringArray);
+
+  sortStrings(stringArray);
+
+  console.log("Відсортований масив рядків:");
+  printArray(stringArray);
+
+  console.log("Чи масив рядків відсортований?");
+  console.log(isStringArraySorted(stringArray) ? "Так, відсортований" : "Ні, не відсортований");
+}
+
+testStringSorting();
+
+function testSubstringSearch() {
+  let testString = "The quick brown fox jumps over the lazy dog";
+  let substring = "fox";
+
+  console.log(`\nЧи містить рядок '${substring}'?`);
+  console.log(findSubstring(testString, substring) ? "Так, містить" : "Ні, не містить");
+
+  let stringArray = ["strawberry", "blueberry", "blackberry", "raspberry"];
+  let searchTerm = "berry";
+
+  console.log(`\nРядки, що містять '${searchTerm}':`);
+  let results = checkSubstrings(stringArray, searchTerm);
+  printArray(results);
+}
+
+testSubstringSearch();
+
+function reverseSortArray(arr) {
+  quickSort(arr, 0, arr.length - 1);
+  arr.reverse();
+}
+
+function testReverseSort() {
+  let arr = generateRandomArray(10);
+
+  console.log("\nОригінальний масив для зворотного сортування:");
+  printArray(arr);
+
+  reverseSortArray(arr);
+
+  console.log("Зворотно відсортований масив:");
+  printArray(arr);
+}
+
+testReverseSort();
+
+function removeDuplicates(arr) {
+  return [...new Set(arr)];
+}
+
+function testRemoveDuplicates() {
+  let arr = [1, 2, 2, 3, 4, 4, 5];
+
+  console.log("\nМасив з дублікованими елементами:");
+  printArray(arr);
+
+  let uniqueArr = removeDuplicates(arr);
+
+  console.log("Масив без дублікатів:");
+  printArray(uniqueArr);
+}
+
+testRemoveDuplicates();
