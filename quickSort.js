@@ -1,51 +1,51 @@
-function swap(arr, i, j) {
-  let temp = arr[i];
+function swap(arr: number[], i: number, j: number): void {
+  let temp: number = arr[i];
   arr[i] = arr[j];
   arr[j] = temp;
 }
 
-function partition(arr, low, high) {
-  let pivot = arr[high];
-  let i = low - 1;
+function partition(arr: number[], low: number, high: number): number {
+  let pivot: number = arr[high];
+  let i: number = low - 1;
 
-  for (let j = low; j <= high - 1; j++) {
-      if (arr[j] < pivot) {
-          i++;
-          swap(arr, i, j);
-      }
+  for (let j: number = low; j <= high - 1; j++) {
+    if (arr[j] < pivot) {
+      i++;
+      swap(arr, i, j);
+    }
   }
   swap(arr, i + 1, high);
   return i + 1;
 }
 
-function quickSort(arr, low, high) {
+function quickSort(arr: number[], low: number, high: number): void {
   if (low < high) {
-      let pi = partition(arr, low, high);
+    let pi: number = partition(arr, low, high);
 
-      quickSort(arr, low, pi - 1);
-      quickSort(arr, pi + 1, high);
+    quickSort(arr, low, pi - 1);
+    quickSort(arr, pi + 1, high);
   }
 }
 
-function sortArray(arr) {
+function sortArray(arr: number[]): void {
   quickSort(arr, 0, arr.length - 1);
 }
 
-function generateRandomArray(size) {
-  let arr = [];
-  for (let i = 0; i < size; i++) {
-      arr.push(Math.floor(Math.random() * 100));
+function generateRandomArray(size: number): number[] {
+  let arr: number[] = [];
+  for (let i: number = 0; i < size; i++) {
+    arr.push(Math.floor(Math.random() * 100));
   }
   return arr;
 }
 
-function printArray(arr) {
+function printArray(arr: (number | string)[]): void {
   console.log(arr.join(', '));
 }
 
-function main() {
-  const size = 10;
-  let arr = generateRandomArray(size);
+function main(): void {
+  const size: number = 10;
+  let arr: number[] = generateRandomArray(size);
 
   console.log("Оригінальний масив:");
   printArray(arr);
@@ -58,9 +58,9 @@ function main() {
 
 main();
 
-function repeatSort() {
-  const newSize = 20;
-  let newArr = generateRandomArray(newSize);
+function repeatSort(): void {
+  const newSize: number = 20;
+  let newArr: number[] = generateRandomArray(newSize);
 
   console.log("\nНовий оригінальний масив:");
   printArray(newArr);
@@ -73,9 +73,9 @@ function repeatSort() {
 
 repeatSort();
 
-function sortLargeArray() {
-  const largeSize = 50; 
-  let largeArr = generateRandomArray(largeSize);
+function sortLargeArray(): void {
+  const largeSize: number = 50; 
+  let largeArr: number[] = generateRandomArray(largeSize);
 
   console.log("\nОригінальний великий масив:");
   printArray(largeArr);
@@ -88,18 +88,18 @@ function sortLargeArray() {
 
 sortLargeArray();
 
-function isArraySorted(arr) {
-  for (let i = 0; i < arr.length - 1; i++) {
-      if (arr[i] > arr[i + 1]) {
-          return false;
-      }
+function isArraySorted(arr: number[]): boolean {
+  for (let i: number = 0; i < arr.length - 1; i++) {
+    if (arr[i] > arr[i + 1]) {
+      return false;
+    }
   }
   return true;
 }
 
-function testIsArraySorted() {
-  let testArr1 = [1, 2, 3, 4, 5];
-  let testArr2 = [5, 4, 3, 2, 1];
+function testIsArraySorted(): void {
+  let testArr1: number[] = [1, 2, 3, 4, 5];
+  let testArr2: number[] = [5, 4, 3, 2, 1];
 
   console.log("\nПеревірка відсортованого масиву:");
   console.log(isArraySorted(testArr1) ? "Масив відсортований" : "Масив не відсортований");
@@ -110,18 +110,18 @@ function testIsArraySorted() {
 
 testIsArraySorted();
 
-function generateAlmostSortedArray(size) {
-  let arr = [];
-  for (let i = 0; i < size; i++) {
-      arr.push(i);
+function generateAlmostSortedArray(size: number): number[] {
+  let arr: number[] = [];
+  for (let i: number = 0; i < size; i++) {
+    arr.push(i);
   }
   arr[size - 1] = size - 3;
   return arr;
 }
 
-function testAlmostSortedArray() {
-  const size = 15;
-  let arr = generateAlmostSortedArray(size);
+function testAlmostSortedArray(): void {
+  const size: number = 15;
+  let arr: number[] = generateAlmostSortedArray(size);
 
   console.log("\nМайже відсортований масив:");
   printArray(arr);
@@ -134,29 +134,29 @@ function testAlmostSortedArray() {
 
 testAlmostSortedArray();
 
-function sortStrings(arr) {
-  arr.sort((a, b) => a.localeCompare(b));
+function sortStrings(arr: string[]): void {
+  arr.sort((a: string, b: string) => a.localeCompare(b));
 }
 
-function isStringArraySorted(arr) {
-  for (let i = 0; i < arr.length - 1; i++) {
-      if (arr[i].localeCompare(arr[i + 1]) > 0) {
-          return false;
-      }
+function isStringArraySorted(arr: string[]): boolean {
+  for (let i: number = 0; i < arr.length - 1; i++) {
+    if (arr[i].localeCompare(arr[i + 1]) > 0) {
+      return false;
+    }
   }
   return true;
 }
 
-function findSubstring(mainString, substring) {
+function findSubstring(mainString: string, substring: string): boolean {
   return mainString.indexOf(substring) !== -1;
 }
 
-function checkSubstrings(arr, substring) {
-  return arr.filter(str => findSubstring(str, substring));
+function checkSubstrings(arr: string[], substring: string): string[] {
+  return arr.filter((str: string) => findSubstring(str, substring));
 }
 
-function testStringSorting() {
-  let stringArray = ["banana", "apple", "orange", "mango", "grape"];
+function testStringSorting(): void {
+  let stringArray: string[] = ["banana", "apple", "orange", "mango", "grape"];
   
   console.log("\nОригінальний масив рядків:");
   printArray(stringArray);
@@ -172,30 +172,30 @@ function testStringSorting() {
 
 testStringSorting();
 
-function testSubstringSearch() {
-  let testString = "The quick brown fox jumps over the lazy dog";
-  let substring = "fox";
+function testSubstringSearch(): void {
+  let testString: string = "The quick brown fox jumps over the lazy dog";
+  let substring: string = "fox";
 
   console.log(`\nЧи містить рядок '${substring}'?`);
   console.log(findSubstring(testString, substring) ? "Так, містить" : "Ні, не містить");
 
-  let stringArray = ["strawberry", "blueberry", "blackberry", "raspberry"];
-  let searchTerm = "berry";
+  let stringArray: string[] = ["strawberry", "blueberry", "blackberry", "raspberry"];
+  let searchTerm: string = "berry";
 
   console.log(`\nРядки, що містять '${searchTerm}':`);
-  let results = checkSubstrings(stringArray, searchTerm);
+  let results: string[] = checkSubstrings(stringArray, searchTerm);
   printArray(results);
 }
 
 testSubstringSearch();
 
-function reverseSortArray(arr) {
+function reverseSortArray(arr: number[]): void {
   quickSort(arr, 0, arr.length - 1);
   arr.reverse();
 }
 
-function testReverseSort() {
-  let arr = generateRandomArray(10);
+function testReverseSort(): void {
+  let arr: number[] = generateRandomArray(10);
 
   console.log("\nОригінальний масив для зворотного сортування:");
   printArray(arr);
@@ -208,17 +208,17 @@ function testReverseSort() {
 
 testReverseSort();
 
-function removeDuplicates(arr) {
+function removeDuplicates(arr: number[]): number[] {
   return [...new Set(arr)];
 }
 
-function testRemoveDuplicates() {
-  let arr = [1, 2, 2, 3, 4, 4, 5];
+function testRemoveDuplicates(): void {
+  let arr: number[] = [1, 2, 2, 3, 4, 4, 5];
 
   console.log("\nМасив з дублікованими елементами:");
   printArray(arr);
 
-  let uniqueArr = removeDuplicates(arr);
+  let uniqueArr: number[] = removeDuplicates(arr);
 
   console.log("Масив без дублікатів:");
   printArray(uniqueArr);
