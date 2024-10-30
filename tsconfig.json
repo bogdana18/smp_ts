@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es2022",
-    "esModuleInterop": true,
-    "allowJs": true,
-    "noUncheckedIndexedAccess": true,
+    "target": "es6",
+    "module": "es6",
+    "outDir": "./js",
     "strict": true,
-    "lib": ["es2022", "dom"]
+    "esModuleInterop": true
   },
-  "include": ["src/**/*"]
+  "include": ["js/**/*.ts"],
+  "exclude": []
 }
